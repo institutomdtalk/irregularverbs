@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MD TALK | Irregular Verbs</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1D3A;
+    --navy-deep: #050D1A;
+    --navy-mid: #0F2645;
+    --navy-light: #163158;
+    --navy-surface: #0A1929;
+    --gold: #C4A45A;
+    --gold-light: #D4BA7A;
+    --gold-pale: #E8D9B0;
+    --gold-glow: rgba(196,164,90,0.12);
+    --gold-faint: rgba(196,164,90,0.05);
+    --gold-line: rgba(196,164,90,0.18);
+    --white: #FFFFFF;
+    --off-white: #F6F4EF;
+    --cream: #FAF8F3;
+    --warm-gray: #9A9590;
+    --text-body: #3A3632;
+    --text-muted: #6B6560;
+    --border: rgba(11,29,58,0.06);
+    --border-gold: rgba(196,164,90,0.22);
+    --green: #34d399;
+    --red: #f87171;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Raleway', 'Helvetica Neue', Arial, sans-serif;
+    --radius: 4px;
+    --shadow-sm: 0 1px 4px rgba(11,29,58,0.04);
+    --shadow-md: 0 6px 24px rgba(11,29,58,0.07);
+    --shadow-lg: 0 16px 48px rgba(11,29,58,0.10);
+    --shadow-gold: 0 8px 32px rgba(196,164,90,0.12);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; font-size: 15px; }
+  body {
+    font-family: var(--sans);
+    background: var(--navy-deep);
+    color: var(--white);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 82vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--navy-deep);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+    padding: 60px 32px 80px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 15% 25%, rgba(196,164,90,0.055) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 60% at 85% 75%, rgba(22,49,88,0.5) 0%, transparent 60%),
+      radial-gradient(ellipse 35% 30% at 65% 8%, rgba(196,164,90,0.025) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .hero-geo { position: absolute; pointer-events: none; z-index: 0; }
+  .hero-geo--ring  { width:480px;height:480px;border:1px solid rgba(196,164,90,0.05);border-radius:50%;top:-140px;right:-100px;animation:geoFloat 22s ease-in-out infinite; }
+  .hero-geo--ring2 { width:300px;height:300px;border:1px solid rgba(196,164,90,0.035);border-radius:50%;bottom:-80px;left:-80px;animation:geoFloat 26s ease-in-out infinite reverse; }
+  .hero-geo--ring3 { width:200px;height:200px;border:1px solid rgba(196,164,90,0.04);border-radius:50%;top:50%;left:6%;transform:translateY(-50%);animation:geoFloat 18s ease-in-out infinite 3s; }
+  .hero-geo--line  { width:1px;height:140px;background:linear-gradient(180deg,transparent,rgba(196,164,90,0.14),transparent);top:35%;left:10%;animation:geoFloat 16s ease-in-out infinite; }
+  .hero-geo--line2 { width:1px;height:100px;background:linear-gradient(180deg,transparent,rgba(196,164,90,0.09),transparent);bottom:12%;right:8%;animation:geoFloat 20s ease-in-out infinite reverse; }
+  .hero-geo--diamond  { width:14px;height:14px;border:1px solid rgba(196,164,90,0.12);transform:rotate(45deg);top:28%;right:16%;animation:geoPulse 6s ease-in-out infinite; }
+  .hero-geo--diamond2 { width:8px;height:8px;border:1px solid rgba(196,164,90,0.08);transform:rotate(45deg);bottom:28%;left:14%;animation:geoPulse 9s ease-in-out infinite 2s; }
+
+  @keyframes geoFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-18px)} }
+  @keyframes geoPulse { 0%,100%{opacity:.4;transform:rotate(45deg) scale(1)} 50%{opacity:1;transform:rotate(45deg) scale(1.4)} }
+  @keyframes heroReveal { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes scrollPulse {
+    0%{transform:scaleY(0);transform-origin:top}
+    50%{transform:scaleY(1);transform-origin:top}
+    50.01%{transform-origin:bottom}
+    100%{transform:scaleY(0);transform-origin:bottom}
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 820px;
+    text-align: center;
+  }
+
+  .hero-overline {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: heroReveal 1s cubic-bezier(0.22,1,0.36,1) 0.25s forwards;
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+    font-weight: 300;
+    line-height: 1.12;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: heroReveal 1s cubic-bezier(0.22,1,0.36,1) 0.42s forwards;
+  }
+  .hero-title em {
+    font-style: italic;
+    font-weight: 400;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-divider {
+    width: 44px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 26px;
+    opacity: 0;
+    animation: heroReveal 1s cubic-bezier(0.22,1,0.36,1) 0.55s forwards;
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.48);
+    max-width: 580px;
+    margin: 0 auto 44px;
+    line-height: 1.9;
+    letter-spacing: .25px;
+    opacity: 0;
+    animation: heroReveal 1s cubic-bezier(0.22,1,0.36,1) 0.65s forwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: heroReveal 1s cubic-bezier(0.22,1,0.36,1) 0.82s forwards;
+  }
+
+  .btn-hero-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gold);
+    color: var(--navy-deep);
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 17px 38px;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.22,1,0.36,1);
+    box-shadow: 0 4px 24px rgba(196,164,90,0.25);
+  }
+  .btn-hero-primary::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .btn-hero-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(196,164,90,0.4);
+    letter-spacing: 3px;
+  }
+  .btn-hero-primary:hover::before { opacity: 1; }
+
+  .btn-hero-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: rgba(196,164,90,0.7);
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 24px;
+    border-radius: 2px;
+    border: 1px solid rgba(196,164,90,0.22);
+    transition: all 0.35s ease;
+  }
+  .btn-hero-ghost:hover {
+    color: var(--gold);
+    border-color: rgba(196,164,90,0.5);
+    background: var(--gold-faint);
+  }
+  .btn-hero-ghost svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.3s ease; }
+  .btn-hero-ghost:hover svg { transform: translateX(3px); }
+
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 32px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    opacity: 0;
+    animation: heroReveal 1s ease-out 1.3s forwards;
+  }
+  .hero-scroll-hint span {
+    display: block;
+    width: 1px; height: 36px;
+    background: linear-gradient(180deg, var(--gold), transparent);
+    margin: 0 auto;
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* ── STICKY HEADER ── */
+  .sticky-header {
+    position: sticky; top: 0; z-index: 200;
+    background: rgba(5,13,26,0.93);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(196,164,90,0.12);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    box-shadow: 0 2px 32px rgba(0,0,0,0.5);
+  }
+  .header-brand {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .header-brand span { color: var(--white); }
+
+  .header-nav { display: flex; align-items: center; gap: 4px; }
+  .header-nav a {
+    color: rgba(196,164,90,0.55);
+    text-decoration: none;
+    font-family: var(--sans);
+    font-size: 9.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 2px;
+    transition: color 0.2s, background 0.2s;
+  }
+  .header-nav a:hover { color: var(--gold); background: var(--gold-faint); }
+
+  /* ── CONTENT ── */
+  .content-body { background: var(--off-white); color: var(--text-body); }
+
+  .controls-bar {
+    padding: 32px 48px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .search-wrap { position: relative; flex: 1; max-width: 320px; min-width: 180px; }
+  .search-wrap svg {
+    position: absolute; left: 14px; top: 50%;
+    transform: translateY(-50%);
+    width: 15px; height: 15px;
+    fill: none; stroke: var(--warm-gray); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+    pointer-events: none;
+  }
+  .search-wrap input {
+    width: 100%;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 11px 14px 11px 40px;
+    color: var(--text-body);
+    font-family: var(--sans);
+    font-size: 13.5px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .search-wrap input:focus { border-color: var(--border-gold); box-shadow: 0 0 0 3px rgba(196,164,90,0.08); }
+  .search-wrap input::placeholder { color: var(--warm-gray); font-style: italic; }
+
+  .filter-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+  .filter-btn {
+    font-family: var(--sans); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700;
+    padding: 9px 20px; border-radius: 2px; border: 1px solid var(--border);
+    background: transparent; color: var(--text-muted); cursor: pointer; transition: all 0.25s ease;
+  }
+  .filter-btn.active, .filter-btn:hover { background: var(--navy); color: var(--gold); border-color: var(--navy); }
+
+  .count-badge {
+    margin-left: auto;
+    font-family: var(--sans); font-size: 9px; letter-spacing: 1.5px; color: var(--text-muted);
+    text-transform: uppercase; font-weight: 600;
+  }
+  .count-badge strong {
+    color: var(--navy);
+    font-family: var(--serif); font-size: 1.15rem; font-weight: 600; font-style: italic;
+  }
+
+  /* ── TABLE ── */
+  .table-wrap { padding: 32px 48px 80px; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; }
+  thead tr { border-bottom: 1px solid var(--border-gold); }
+  thead th {
+    font-family: var(--sans); font-size: 9px; letter-spacing: 3.5px; text-transform: uppercase;
+    color: var(--gold); padding: 14px 22px; text-align: left; font-weight: 700;
+  }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; animation: rowFade 0.3s ease both; }
+  @keyframes rowFade { from{opacity:0;transform:translateY(5px)} to{opacity:1;transform:translateY(0)} }
+  tbody tr:hover { background: rgba(196,164,90,0.04); }
+  tbody td { padding: 14px 22px; font-size: 0.9rem; font-weight: 400; color: var(--text-muted); position: relative; }
+
+  td.verb-cell {
+    font-family: var(--serif); font-size: 1.15rem; font-weight: 600; color: var(--text-body);
+    cursor: default; white-space: nowrap;
+  }
+  td.verb-cell .tooltip {
+    display: none; position: absolute; bottom: calc(100% + 8px); left: 22px;
+    background: var(--navy-deep); border: 1px solid rgba(196,164,90,0.2); color: var(--gold-light);
+    font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.5px;
+    padding: 6px 14px; border-radius: 2px; white-space: nowrap; z-index: 10; pointer-events: none;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  }
+  td.verb-cell .tooltip::after {
+    content: ''; position: absolute; top: 100%; left: 18px;
+    border: 5px solid transparent; border-top-color: var(--navy-deep);
+  }
+  td.verb-cell:hover .tooltip { display: block; }
+  td.verb-cell:hover { color: var(--navy); }
+
+  td.pt2-cell, td.pp-cell {
+    font-family: var(--serif); font-size: 1.05rem; font-weight: 400; color: var(--text-body); font-style: italic;
+  }
+
+  .badge-level {
+    display: inline-block; font-family: var(--sans); font-size: 8.5px; letter-spacing: 1.5px;
+    text-transform: uppercase; padding: 3px 10px; border-radius: 20px; font-weight: 700;
+  }
+  .badge-A { background: rgba(52,211,153,0.1); color: #1f8a5e; border: 1px solid rgba(52,211,153,0.25); }
+  .badge-B { background: rgba(196,164,90,0.1); color: #8a6b20; border: 1px solid rgba(196,164,90,0.25); }
+  .badge-C { background: rgba(220,60,60,0.08); color: #b03030; border: 1px solid rgba(220,60,60,0.2); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy-deep);
+    border-top: 1px solid rgba(196,164,90,0.1);
+    padding: 48px 48px 40px;
+    display: flex; flex-direction: column; align-items: center; gap: 22px;
+    position: relative;
+  }
+  footer::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.22;
+  }
+  .footer-nav { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; }
+  .footer-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--sans); font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 700;
+    color: rgba(196,164,90,0.55); text-decoration: none;
+    padding: 10px 22px; border: 1px solid rgba(196,164,90,0.15); border-radius: 2px; transition: all 0.3s ease;
+  }
+  .footer-link:hover { color: var(--gold); border-color: rgba(196,164,90,0.4); background: var(--gold-faint); }
+  .footer-link svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .footer-link.primary { background: var(--gold); color: var(--navy-deep); border-color: var(--gold); }
+  .footer-link.primary:hover { background: var(--gold-light); border-color: var(--gold-light); color: var(--navy-deep); }
+  .footer-sep { width: 1px; height: 18px; background: rgba(196,164,90,0.15); }
+  .footer-brand { font-family: var(--serif); font-size: 1.05rem; color: var(--gold); letter-spacing: 1px; }
+  .footer-copy { font-family: var(--sans); font-size: 10px; letter-spacing: 1px; color: rgba(255,255,255,0.18); }
+
+  @media (max-width: 640px) {
+    .sticky-header { padding: 0 20px; height: 60px; }
+    .hero { padding: 48px 20px 64px; min-height: 70vh; }
+    .hero-geo--ring, .hero-geo--ring2, .hero-geo--ring3 { display: none; }
+    .hero-scroll-hint { display: none; }
+    .controls-bar { padding: 20px 20px; }
+    .table-wrap { padding: 20px 8px 60px; }
+    thead th, tbody td { padding: 12px 12px; }
+    footer { padding: 36px 20px; }
+    .header-nav a { display: none; }
+    .count-badge { display: none; }
+    .footer-sep { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-geo hero-geo--ring"></div>
+  <div class="hero-geo hero-geo--ring2"></div>
+  <div class="hero-geo hero-geo--ring3"></div>
+  <div class="hero-geo hero-geo--line"></div>
+  <div class="hero-geo hero-geo--line2"></div>
+  <div class="hero-geo hero-geo--diamond"></div>
+  <div class="hero-geo hero-geo--diamond2"></div>
+
+  <div class="hero-inner">
+    <p class="hero-overline">English Grammar · Past Simple</p>
+    <h1 class="hero-title">Irregular <em>Verbs</em></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-subtitle">Lista completa de verbos irregulares em inglês. Passe o mouse sobre o verbo para ver a tradução em português.</p>
+    <div class="hero-actions">
+      <a href="flashcards.html" class="btn-hero-primary">Praticar com Flash Cards</a>
+      <a href="https://institutomdtalk.github.io/pastsimple/" class="btn-hero-ghost">
+        Past Simple
+        <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll-hint"><span></span></div>
+</header>
+
+<div class="sticky-header">
+  <a class="header-brand" href="#">MD <span>TALK</span></a>
+  <nav class="header-nav">
+    <a href="https://institutomdtalk.github.io/portaldoaluno/">Portal do Aluno</a>
+    <a href="https://institutomdtalk.github.io/pastsimple/">Past Simple</a>
+    <a href="flashcards.html">Flash Cards</a>
+  </nav>
+</div>
+
+<div class="content-body">
+  <div class="controls-bar">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" id="searchInput" placeholder="Buscar verbo...">
+    </div>
+    <div class="filter-btns">
+      <button class="filter-btn active" data-level="all">Todos</button>
+      <button class="filter-btn" data-level="A">Iniciante</button>
+      <button class="filter-btn" data-level="B">Intermediário</button>
+      <button class="filter-btn" data-level="C">Avançado</button>
+    </div>
+    <div class="count-badge">Exibindo <strong id="countDisplay">0</strong> verbos</div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Infinitivo</th>
+          <th>Past Simple</th>
+          <th>Past Participle</th>
+          <th>Nível</th>
+        </tr>
+      </thead>
+      <tbody id="verbTable"></tbody>
+    </table>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-nav">
+    <a href="https://institutomdtalk.github.io/pastsimple/" class="footer-link">
+      <svg viewBox="0 0 24 24"><path d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+      Voltar ao Past Simple
+    </a>
+    <div class="footer-sep"></div>
+    <a href="https://institutomdtalk.github.io/portaldoaluno/" class="footer-link primary">
+      <svg viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+      Portal do Aluno
+    </a>
+  </div>
+  <div class="footer-brand">Instituto MD Talk</div>
+  <div class="footer-copy">&copy; 2025 MD Talk &bull; All rights reserved</div>
+</footer>
+
+<script>
+const verbs = [
+  { inf:"be", pt2:"was/were", pp:"been", tr:"ser / estar", level:"A" },
+  { inf:"have", pt2:"had", pp:"had", tr:"ter", level:"A" },
+  { inf:"do", pt2:"did", pp:"done", tr:"fazer", level:"A" },
+  { inf:"say", pt2:"said", pp:"said", tr:"dizer", level:"A" },
+  { inf:"go", pt2:"went", pp:"gone", tr:"ir", level:"A" },
+  { inf:"get", pt2:"got", pp:"got/gotten", tr:"obter / conseguir", level:"A" },
+  { inf:"make", pt2:"made", pp:"made", tr:"fazer / criar", level:"A" },
+  { inf:"know", pt2:"knew", pp:"known", tr:"saber / conhecer", level:"A" },
+  { inf:"think", pt2:"thought", pp:"thought", tr:"pensar", level:"A" },
+  { inf:"see", pt2:"saw", pp:"seen", tr:"ver", level:"A" },
+  { inf:"come", pt2:"came", pp:"come", tr:"vir", level:"A" },
+  { inf:"want", pt2:"wanted", pp:"wanted", tr:"querer", level:"A" },
+  { inf:"give", pt2:"gave", pp:"given", tr:"dar", level:"A" },
+  { inf:"find", pt2:"found", pp:"found", tr:"encontrar", level:"A" },
+  { inf:"tell", pt2:"told", pp:"told", tr:"contar / dizer", level:"A" },
+  { inf:"become", pt2:"became", pp:"become", tr:"tornar-se", level:"A" },
+  { inf:"leave", pt2:"left", pp:"left", tr:"sair / deixar", level:"A" },
+  { inf:"feel", pt2:"felt", pp:"felt", tr:"sentir", level:"A" },
+  { inf:"put", pt2:"put", pp:"put", tr:"colocar", level:"A" },
+  { inf:"bring", pt2:"brought", pp:"brought", tr:"trazer", level:"A" },
+  { inf:"begin", pt2:"began", pp:"begun", tr:"começar", level:"A" },
+  { inf:"keep", pt2:"kept", pp:"kept", tr:"manter / guardar", level:"A" },
+  { inf:"hold", pt2:"held", pp:"held", tr:"segurar / manter", level:"A" },
+  { inf:"write", pt2:"wrote", pp:"written", tr:"escrever", level:"A" },
+  { inf:"sit", pt2:"sat", pp:"sat", tr:"sentar", level:"A" },
+  { inf:"stand", pt2:"stood", pp:"stood", tr:"ficar em pé", level:"A" },
+  { inf:"hear", pt2:"heard", pp:"heard", tr:"ouvir", level:"A" },
+  { inf:"let", pt2:"let", pp:"let", tr:"deixar / permitir", level:"A" },
+  { inf:"meet", pt2:"met", pp:"met", tr:"encontrar / conhecer", level:"A" },
+  { inf:"run", pt2:"ran", pp:"run", tr:"correr", level:"A" },
+  { inf:"read", pt2:"read", pp:"read", tr:"ler", level:"A" },
+  { inf:"eat", pt2:"ate", pp:"eaten", tr:"comer", level:"A" },
+  { inf:"drink", pt2:"drank", pp:"drunk", tr:"beber", level:"A" },
+  { inf:"sleep", pt2:"slept", pp:"slept", tr:"dormir", level:"A" },
+  { inf:"buy", pt2:"bought", pp:"bought", tr:"comprar", level:"A" },
+  { inf:"pay", pt2:"paid", pp:"paid", tr:"pagar", level:"A" },
+  { inf:"take", pt2:"took", pp:"taken", tr:"pegar / levar", level:"A" },
+  { inf:"speak", pt2:"spoke", pp:"spoken", tr:"falar", level:"A" },
+  { inf:"send", pt2:"sent", pp:"sent", tr:"enviar", level:"A" },
+  { inf:"show", pt2:"showed", pp:"shown", tr:"mostrar", level:"A" },
+  { inf:"break", pt2:"broke", pp:"broken", tr:"quebrar", level:"A" },
+  { inf:"win", pt2:"won", pp:"won", tr:"ganhar / vencer", level:"A" },
+  { inf:"lose", pt2:"lost", pp:"lost", tr:"perder", level:"A" },
+  { inf:"drive", pt2:"drove", pp:"driven", tr:"dirigir", level:"A" },
+  { inf:"fly", pt2:"flew", pp:"flown", tr:"voar", level:"A" },
+  { inf:"swim", pt2:"swam", pp:"swum", tr:"nadar", level:"A" },
+  { inf:"sing", pt2:"sang", pp:"sung", tr:"cantar", level:"A" },
+  { inf:"fall", pt2:"fell", pp:"fallen", tr:"cair", level:"A" },
+  { inf:"catch", pt2:"caught", pp:"caught", tr:"pegar / capturar", level:"A" },
+  { inf:"throw", pt2:"threw", pp:"thrown", tr:"jogar / lançar", level:"A" },
+  { inf:"build", pt2:"built", pp:"built", tr:"construir", level:"B" },
+  { inf:"choose", pt2:"chose", pp:"chosen", tr:"escolher", level:"B" },
+  { inf:"cut", pt2:"cut", pp:"cut", tr:"cortar", level:"B" },
+  { inf:"deal", pt2:"dealt", pp:"dealt", tr:"lidar / negociar", level:"B" },
+  { inf:"draw", pt2:"drew", pp:"drawn", tr:"desenhar", level:"B" },
+  { inf:"dream", pt2:"dreamt/dreamed", pp:"dreamt/dreamed", tr:"sonhar", level:"B" },
+  { inf:"fight", pt2:"fought", pp:"fought", tr:"lutar / brigar", level:"B" },
+  { inf:"forget", pt2:"forgot", pp:"forgotten", tr:"esquecer", level:"B" },
+  { inf:"forgive", pt2:"forgave", pp:"forgiven", tr:"perdoar", level:"B" },
+  { inf:"freeze", pt2:"froze", pp:"frozen", tr:"congelar", level:"B" },
+  { inf:"grow", pt2:"grew", pp:"grown", tr:"crescer", level:"B" },
+  { inf:"hang", pt2:"hung", pp:"hung", tr:"pendurar", level:"B" },
+  { inf:"hide", pt2:"hid", pp:"hidden", tr:"esconder", level:"B" },
+  { inf:"hit", pt2:"hit", pp:"hit", tr:"bater / acertar", level:"B" },
+  { inf:"hurt", pt2:"hurt", pp:"hurt", tr:"machucar / doer", level:"B" },
+  { inf:"lead", pt2:"led", pp:"led", tr:"liderar", level:"B" },
+  { inf:"learn", pt2:"learnt/learned", pp:"learnt/learned", tr:"aprender", level:"B" },
+  { inf:"lend", pt2:"lent", pp:"lent", tr:"emprestar", level:"B" },
+  { inf:"mean", pt2:"meant", pp:"meant", tr:"significar", level:"B" },
+  { inf:"ride", pt2:"rode", pp:"ridden", tr:"andar (cavalo/bike)", level:"B" },
+  { inf:"ring", pt2:"rang", pp:"rung", tr:"tocar / ligar", level:"B" },
+  { inf:"rise", pt2:"rose", pp:"risen", tr:"subir / levantar", level:"B" },
+  { inf:"sell", pt2:"sold", pp:"sold", tr:"vender", level:"B" },
+  { inf:"set", pt2:"set", pp:"set", tr:"definir / configurar", level:"B" },
+  { inf:"shoot", pt2:"shot", pp:"shot", tr:"atirar", level:"B" },
+  { inf:"shut", pt2:"shut", pp:"shut", tr:"fechar", level:"B" },
+  { inf:"spend", pt2:"spent", pp:"spent", tr:"gastar / passar tempo", level:"B" },
+  { inf:"steal", pt2:"stole", pp:"stolen", tr:"roubar", level:"B" },
+  { inf:"stick", pt2:"stuck", pp:"stuck", tr:"grudar / ficar preso", level:"B" },
+  { inf:"strike", pt2:"struck", pp:"struck", tr:"golpear / atingir", level:"B" },
+  { inf:"swear", pt2:"swore", pp:"sworn", tr:"jurar / xingar", level:"B" },
+  { inf:"sweep", pt2:"swept", pp:"swept", tr:"varrer", level:"B" },
+  { inf:"swing", pt2:"swung", pp:"swung", tr:"balançar", level:"B" },
+  { inf:"teach", pt2:"taught", pp:"taught", tr:"ensinar", level:"B" },
+  { inf:"tear", pt2:"tore", pp:"torn", tr:"rasgar", level:"B" },
+  { inf:"understand", pt2:"understood", pp:"understood", tr:"entender", level:"B" },
+  { inf:"wake", pt2:"woke", pp:"woken", tr:"acordar", level:"B" },
+  { inf:"wear", pt2:"wore", pp:"worn", tr:"vestir / usar", level:"B" },
+  { inf:"forbid", pt2:"forbade", pp:"forbidden", tr:"proibir", level:"B" },
+  { inf:"lay", pt2:"laid", pp:"laid", tr:"deitar / pôr", level:"B" },
+  { inf:"lie", pt2:"lay", pp:"lain", tr:"deitar-se", level:"B" },
+  { inf:"light", pt2:"lit", pp:"lit", tr:"acender", level:"B" },
+  { inf:"mistake", pt2:"mistook", pp:"mistaken", tr:"confundir / errar", level:"B" },
+  { inf:"overcome", pt2:"overcame", pp:"overcome", tr:"superar", level:"B" },
+  { inf:"slide", pt2:"slid", pp:"slid", tr:"deslizar", level:"B" },
+  { inf:"smell", pt2:"smelt/smelled", pp:"smelt/smelled", tr:"cheirar", level:"B" },
+  { inf:"arise", pt2:"arose", pp:"arisen", tr:"surgir / levantar", level:"C" },
+  { inf:"awake", pt2:"awoke", pp:"awoken", tr:"despertar", level:"C" },
+  { inf:"bear", pt2:"bore", pp:"born/borne", tr:"suportar / dar à luz", level:"C" },
+  { inf:"beat", pt2:"beat", pp:"beaten", tr:"bater / vencer", level:"C" },
+  { inf:"bend", pt2:"bent", pp:"bent", tr:"dobrar / curvar", level:"C" },
+  { inf:"bet", pt2:"bet", pp:"bet", tr:"apostar", level:"C" },
+  { inf:"bind", pt2:"bound", pp:"bound", tr:"amarrar / ligar", level:"C" },
+  { inf:"bite", pt2:"bit", pp:"bitten", tr:"morder", level:"C" },
+  { inf:"bleed", pt2:"bled", pp:"bled", tr:"sangrar", level:"C" },
+  { inf:"blow", pt2:"blew", pp:"blown", tr:"soprar", level:"C" },
+  { inf:"breed", pt2:"bred", pp:"bred", tr:"criar / reproduzir", level:"C" },
+  { inf:"broadcast", pt2:"broadcast", pp:"broadcast", tr:"transmitir", level:"C" },
+  { inf:"burst", pt2:"burst", pp:"burst", tr:"explodir / estourar", level:"C" },
+  { inf:"cast", pt2:"cast", pp:"cast", tr:"lançar / elencar", level:"C" },
+  { inf:"cling", pt2:"clung", pp:"clung", tr:"agarrar-se", level:"C" },
+  { inf:"cost", pt2:"cost", pp:"cost", tr:"custar", level:"C" },
+  { inf:"creep", pt2:"crept", pp:"crept", tr:"rastejar", level:"C" },
+  { inf:"dig", pt2:"dug", pp:"dug", tr:"cavar", level:"C" },
+  { inf:"dive", pt2:"dove/dived", pp:"dived", tr:"mergulhar", level:"C" },
+  { inf:"dwell", pt2:"dwelt", pp:"dwelt", tr:"habitar / morar", level:"C" },
+  { inf:"feed", pt2:"fed", pp:"fed", tr:"alimentar", level:"C" },
+  { inf:"flee", pt2:"fled", pp:"fled", tr:"fugir", level:"C" },
+  { inf:"fling", pt2:"flung", pp:"flung", tr:"atirar / arremessar", level:"C" },
+  { inf:"forecast", pt2:"forecast", pp:"forecast", tr:"prever / prognosticar", level:"C" },
+  { inf:"grind", pt2:"ground", pp:"ground", tr:"moer", level:"C" },
+  { inf:"input", pt2:"input", pp:"input", tr:"inserir dados", level:"C" },
+  { inf:"kneel", pt2:"knelt", pp:"knelt", tr:"ajoelhar", level:"C" },
+  { inf:"knit", pt2:"knit/knitted", pp:"knit/knitted", tr:"tricotar", level:"C" },
+  { inf:"leap", pt2:"leapt/leaped", pp:"leapt/leaped", tr:"saltar", level:"C" },
+  { inf:"mislead", pt2:"misled", pp:"misled", tr:"enganar / induzir ao erro", level:"C" },
+  { inf:"offset", pt2:"offset", pp:"offset", tr:"compensar", level:"C" },
+  { inf:"outgrow", pt2:"outgrew", pp:"outgrown", tr:"crescer além / superar", level:"C" },
+  { inf:"overhear", pt2:"overheard", pp:"overheard", tr:"ouvir por acaso", level:"C" },
+  { inf:"overtake", pt2:"overtook", pp:"overtaken", tr:"ultrapassar", level:"C" },
+  { inf:"rewrite", pt2:"rewrote", pp:"rewritten", tr:"reescrever", level:"C" },
+  { inf:"sew", pt2:"sewed", pp:"sewn", tr:"costurar", level:"C" },
+  { inf:"shed", pt2:"shed", pp:"shed", tr:"derramar / perder pelos", level:"C" },
+  { inf:"shine", pt2:"shone", pp:"shone", tr:"brilhar", level:"C" },
+  { inf:"shrink", pt2:"shrank", pp:"shrunk", tr:"encolher", level:"C" },
+  { inf:"sink", pt2:"sank", pp:"sunk", tr:"afundar", level:"C" },
+  { inf:"slay", pt2:"slew", pp:"slain", tr:"matar / abater", level:"C" },
+  { inf:"slit", pt2:"slit", pp:"slit", tr:"cortar / rasgar", level:"C" },
+  { inf:"sow", pt2:"sowed", pp:"sown", tr:"semear / plantar", level:"C" },
+  { inf:"speed", pt2:"sped", pp:"sped", tr:"acelerar / apressar", level:"C" },
+  { inf:"spin", pt2:"spun", pp:"spun", tr:"girar / fiar", level:"C" },
+  { inf:"spit", pt2:"spat/spit", pp:"spat/spit", tr:"cuspir", level:"C" },
+  { inf:"split", pt2:"split", pp:"split", tr:"dividir / separar", level:"C" },
+  { inf:"spread", pt2:"spread", pp:"spread", tr:"espalhar / passar", level:"C" },
+  { inf:"spring", pt2:"sprang", pp:"sprung", tr:"saltar / brotar", level:"C" },
+  { inf:"stink", pt2:"stank", pp:"stunk", tr:"feder / cheirar mal", level:"C" },
+  { inf:"stride", pt2:"strode", pp:"stridden", tr:"caminhar a passos largos", level:"C" },
+  { inf:"string", pt2:"strung", pp:"strung", tr:"enfiar / amarrar", level:"C" },
+  { inf:"strive", pt2:"strove", pp:"striven", tr:"esforçar-se", level:"C" },
+  { inf:"sweat", pt2:"sweat/sweated", pp:"sweat/sweated", tr:"suar", level:"C" },
+  { inf:"thrust", pt2:"thrust", pp:"thrust", tr:"empurrar / introduzir", level:"C" },
+  { inf:"tread", pt2:"trod", pp:"trodden", tr:"pisar", level:"C" },
+  { inf:"undergo", pt2:"underwent", pp:"undergone", tr:"sofrer / passar por", level:"C" },
+  { inf:"undertake", pt2:"undertook", pp:"undertaken", tr:"comprometer-se / empreender", level:"C" },
+  { inf:"uphold", pt2:"upheld", pp:"upheld", tr:"defender / sustentar", level:"C" },
+  { inf:"upset", pt2:"upset", pp:"upset", tr:"perturbar / virar", level:"C" },
+  { inf:"weave", pt2:"wove", pp:"woven", tr:"tecer / entrelançar", level:"C" },
+  { inf:"weep", pt2:"wept", pp:"wept", tr:"chorar", level:"C" },
+  { inf:"withhold", pt2:"withheld", pp:"withheld", tr:"reter / negar", level:"C" },
+  { inf:"withstand", pt2:"withstood", pp:"withstood", tr:"resistir / suportar", level:"C" },
+  { inf:"wring", pt2:"wrung", pp:"wrung", tr:"torcer / espremer", level:"C" },
+];
+
+const seen = new Set();
+const uniqueVerbs = verbs.filter(v => {
+  if (seen.has(v.inf + v.level)) return false;
+  seen.add(v.inf + v.level);
+  return true;
+});
+
+const tbody = document.getElementById('verbTable');
+const countDisplay = document.getElementById('countDisplay');
+const searchInput = document.getElementById('searchInput');
+let currentLevel = 'all';
+
+function renderTable() {
+  const q = searchInput.value.toLowerCase().trim();
+  const filtered = uniqueVerbs.filter(v => {
+    const matchLevel = currentLevel === 'all' || v.level === currentLevel;
+    const matchSearch = !q || v.inf.includes(q) || v.pt2.includes(q) || v.pp.includes(q) || v.tr.toLowerCase().includes(q);
+    return matchLevel && matchSearch;
+  });
+  countDisplay.textContent = filtered.length;
+  tbody.innerHTML = filtered.map((v, i) => `
+    <tr style="animation-delay:${Math.min(i * 0.012, 0.4)}s">
+      <td class="verb-cell">${v.inf}<span class="tooltip">PT: ${v.tr}</span></td>
+      <td class="pt2-cell">${v.pt2}</td>
+      <td class="pp-cell">${v.pp}</td>
+      <td><span class="badge-level badge-${v.level}">${v.level === 'A' ? 'Iniciante' : v.level === 'B' ? 'Intermediário' : 'Avançado'}</span></td>
+    </tr>
+  `).join('');
+}
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentLevel = btn.dataset.level;
+    renderTable();
+  });
+});
+
+searchInput.addEventListener('input', renderTable);
+renderTable();
+
+const geos = document.querySelectorAll('.hero-geo');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if (y < window.innerHeight) {
+    geos.forEach((g, i) => { g.style.transform = `translateY(${y * (0.018 + i * 0.007)}px)`; });
+  }
+}, { passive: true });
+</script>
+</body>
+</html>
