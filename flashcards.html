@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MD TALK | Flash Cards — Irregular Verbs</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1D3A;
+    --navy-deep: #050D1A;
+    --navy-mid: #0F2645;
+    --navy-light: #163158;
+    --navy-surface: #0A1929;
+    --gold: #C4A45A;
+    --gold-light: #D4BA7A;
+    --gold-pale: #E8D9B0;
+    --gold-glow: rgba(196,164,90,0.12);
+    --gold-faint: rgba(196,164,90,0.05);
+    --gold-line: rgba(196,164,90,0.18);
+    --white: #FFFFFF;
+    --off-white: #F6F4EF;
+    --warm-gray: #9A9590;
+    --text-body: #3A3632;
+    --text-muted: #6B6560;
+    --border: rgba(11,29,58,0.07);
+    --border-gold: rgba(196,164,90,0.22);
+    --green: #34d399;
+    --red: #f87171;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Raleway', 'Helvetica Neue', Arial, sans-serif;
+    --radius: 4px;
+    --shadow-sm: 0 1px 4px rgba(11,29,58,0.04);
+    --shadow-md: 0 6px 24px rgba(11,29,58,0.07);
+    --shadow-lg: 0 16px 48px rgba(11,29,58,0.10);
+    --shadow-gold: 0 8px 32px rgba(196,164,90,0.12);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; font-size: 15px; }
+  body {
+    font-family: var(--sans);
+    background: var(--navy-deep);
+    color: var(--white);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--navy-deep);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+    padding: 60px 32px 80px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 15% 25%, rgba(196,164,90,0.055) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 60% at 85% 75%, rgba(22,49,88,0.5) 0%, transparent 60%),
+      radial-gradient(ellipse 35% 30% at 65% 8%, rgba(196,164,90,0.025) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .hero-geo { position: absolute; pointer-events: none; z-index: 0; }
+  .hero-geo--ring  { width:480px;height:480px;border:1px solid rgba(196,164,90,0.05);border-radius:50%;top:-140px;right:-100px;animation:geoFloat 22s ease-in-out infinite; }
+  .hero-geo--ring2 { width:300px;height:300px;border:1px solid rgba(196,164,90,0.035);border-radius:50%;bottom:-80px;left:-80px;animation:geoFloat 26s ease-in-out infinite reverse; }
+  .hero-geo--ring3 { width:200px;height:200px;border:1px solid rgba(196,164,90,0.04);border-radius:50%;top:50%;left:6%;transform:translateY(-50%);animation:geoFloat 18s ease-in-out infinite 3s; }
+  .hero-geo--line  { width:1px;height:140px;background:linear-gradient(180deg,transparent,rgba(196,164,90,0.14),transparent);top:35%;left:10%;animation:geoFloat 16s ease-in-out infinite; }
+  .hero-geo--line2 { width:1px;height:100px;background:linear-gradient(180deg,transparent,rgba(196,164,90,0.09),transparent);bottom:12%;right:8%;animation:geoFloat 20s ease-in-out infinite reverse; }
+  .hero-geo--diamond  { width:14px;height:14px;border:1px solid rgba(196,164,90,0.12);transform:rotate(45deg);top:28%;right:16%;animation:geoPulse 6s ease-in-out infinite; }
+  .hero-geo--diamond2 { width:8px;height:8px;border:1px solid rgba(196,164,90,0.08);transform:rotate(45deg);bottom:28%;left:14%;animation:geoPulse 9s ease-in-out infinite 2s; }
+
+  @keyframes geoFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-18px)} }
+  @keyframes geoPulse { 0%,100%{opacity:.4;transform:rotate(45deg) scale(1)} 50%{opacity:1;transform:rotate(45deg) scale(1.4)} }
+  @keyframes heroReveal { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes scrollPulse {
+    0%{transform:scaleY(0);transform-origin:top} 50%{transform:scaleY(1);transform-origin:top}
+    50.01%{transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom}
+  }
+  @keyframes slideIn { from{opacity:0;transform:translateX(20px)} to{opacity:1;transform:translateX(0)} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes shimmer { 0%{background-position:-200% center} 100%{background-position:200% center} }
+
+  .hero-inner {
+    position: relative; z-index: 1;
+    max-width: 820px; text-align: center;
+  }
+
+  .hero-overline {
+    font-size: 10px; font-weight: 600; letter-spacing: 6px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 28px;
+    opacity: 0; animation: heroReveal 1s cubic-bezier(0.22,1,0.36,1) 0.25s forwards;
+  }
+  .hero-title {
+    font-family: var(--serif); font-size: clamp(2.4rem, 5.5vw, 3.8rem); font-weight: 300; line-height: 1.12;
+    margin-bottom: 24px; opacity: 0; animation: heroReveal 1s cubic-bezier(0.22,1,0.36,1) 0.42s forwards;
+  }
+  .hero-title em {
+    font-style: italic; font-weight: 400;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero-divider {
+    width: 44px; height: 1px; background: var(--gold); margin: 0 auto 26px;
+    opacity: 0; animation: heroReveal 1s cubic-bezier(0.22,1,0.36,1) 0.55s forwards;
+  }
+  .hero-subtitle {
+    font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.48);
+    max-width: 580px; margin: 0 auto 44px; line-height: 1.9; letter-spacing: .25px;
+    opacity: 0; animation: heroReveal 1s cubic-bezier(0.22,1,0.36,1) 0.65s forwards;
+  }
+  .hero-pills {
+    display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
+    opacity: 0; animation: heroReveal 1s cubic-bezier(0.22,1,0.36,1) 0.82s forwards;
+  }
+  .hero-pill {
+    font-size: 10px; font-weight: 600; letter-spacing: 1.8px; text-transform: uppercase;
+    color: rgba(196,164,90,0.7); border: 1px solid rgba(196,164,90,0.18); padding: 8px 18px; border-radius: 20px;
+  }
+  .hero-scroll-hint {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); z-index: 1;
+    opacity: 0; animation: heroReveal 1s ease-out 1.3s forwards;
+  }
+  .hero-scroll-hint span {
+    display: block; width: 1px; height: 36px;
+    background: linear-gradient(180deg, var(--gold), transparent);
+    margin: 0 auto; animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* ── STICKY HEADER ── */
+  .sticky-header {
+    position: sticky; top: 0; z-index: 200;
+    background: rgba(5,13,26,0.93);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(196,164,90,0.12);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+    box-shadow: 0 2px 32px rgba(0,0,0,0.5);
+    flex-shrink: 0;
+  }
+  .header-brand {
+    font-family: var(--serif); font-size: 1.35rem; font-weight: 600;
+    color: var(--gold); letter-spacing: 3px; text-decoration: none; text-transform: uppercase;
+  }
+  .header-brand span { color: var(--white); }
+  .header-nav { display: flex; align-items: center; gap: 4px; }
+  .header-nav a {
+    color: rgba(196,164,90,0.55); text-decoration: none;
+    font-family: var(--sans); font-size: 9.5px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600;
+    padding: 6px 14px; border-radius: 2px; transition: color 0.2s, background 0.2s;
+  }
+  .header-nav a:hover { color: var(--gold); background: var(--gold-faint); }
+
+  /* ── SCOREBOARD ── */
+  .scoreboard {
+    background: rgba(5,13,26,0.7);
+    border-bottom: 1px solid rgba(196,164,90,0.1);
+    padding: 18px 48px;
+    display: flex; align-items: center; gap: 36px; flex-wrap: wrap;
+    flex-shrink: 0;
+  }
+  .score-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .score-label {
+    font-family: var(--sans); font-size: 8px; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(196,164,90,0.45); font-weight: 700;
+  }
+  .score-val {
+    font-family: var(--serif); font-size: 2rem; font-weight: 400; color: var(--gold);
+    line-height: 1; font-style: italic;
+  }
+  .score-val.green { color: var(--green); }
+  .score-val.red { color: var(--red); }
+  .progress-wrap { flex: 1; min-width: 180px; }
+  .progress-label {
+    font-family: var(--sans); font-size: 8px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: rgba(196,164,90,0.4); font-weight: 700; margin-bottom: 10px;
+  }
+  .progress-bar { height: 2px; background: rgba(196,164,90,0.1); border-radius: 2px; overflow: hidden; }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold-light), var(--gold));
+    border-radius: 2px;
+    transition: width 0.5s cubic-bezier(0.22,1,0.36,1);
+    width: 0%;
+  }
+
+  /* ── GAME MAIN ── */
+  .game-main {
+    flex: 1;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 48px 24px;
+    background: linear-gradient(180deg, var(--navy-deep) 0%, #070f1e 100%);
+    position: relative;
+  }
+  .game-main::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(196,164,90,0.03) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* ── INTRO SCREEN ── */
+  #introScreen {
+    text-align: center; max-width: 600px;
+    position: relative; z-index: 1;
+    animation: fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) both;
+  }
+
+  .section-overline {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family: var(--sans); font-size: 9px; font-weight: 700; letter-spacing: 5px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 28px;
+  }
+  .section-overline::before, .section-overline::after {
+    content: ''; display: block; width: 28px; height: 1px; background: var(--gold-line);
+  }
+
+  .intro-title {
+    font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 300;
+    color: var(--white); margin-bottom: 18px; letter-spacing: .5px; line-height: 1.1;
+  }
+  .intro-title em { font-style: italic; color: var(--gold-light); font-weight: 400; }
+  .intro-desc {
+    font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.42);
+    line-height: 1.9; margin-bottom: 40px; letter-spacing: .2px;
+  }
+
+  .selector-group { margin-bottom: 20px; }
+  .selector-label {
+    font-family: var(--sans); font-size: 8.5px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(196,164,90,0.4); margin-bottom: 12px; text-align: left;
+  }
+  .selector-wrap { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-start; }
+  .sel-btn {
+    font-family: var(--sans); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700;
+    padding: 10px 22px; border-radius: 2px; border: 1px solid rgba(196,164,90,0.15);
+    background: transparent; color: rgba(196,164,90,0.45); cursor: pointer; transition: all 0.25s ease;
+  }
+  .sel-btn.active, .sel-btn:hover {
+    background: var(--gold); color: var(--navy-deep); border-color: var(--gold);
+  }
+
+  .divider-ornament {
+    display: flex; align-items: center; gap: 14px; margin: 28px 0;
+  }
+  .divider-ornament::before, .divider-ornament::after {
+    content: ''; flex: 1; height: 1px; background: rgba(196,164,90,0.1);
+  }
+  .divider-ornament span {
+    width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); opacity: 0.35; flex-shrink: 0;
+  }
+
+  .start-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--gold); color: var(--navy-deep);
+    font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+    padding: 18px 52px; border-radius: 2px; border: none; cursor: pointer;
+    position: relative; overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.22,1,0.36,1);
+    box-shadow: 0 4px 24px rgba(196,164,90,0.25);
+  }
+  .start-btn::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 60%);
+    opacity: 0; transition: opacity 0.4s ease;
+  }
+  .start-btn:hover {
+    background: var(--gold-light); transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(196,164,90,0.4); letter-spacing: 3px;
+  }
+  .start-btn:hover::before { opacity: 1; }
+
+  /* ── CARD SCREEN ── */
+  #cardScreen { display: none; width: 100%; max-width: 660px; position: relative; z-index: 1; }
+
+  .question-type {
+    font-family: var(--sans); font-size: 8.5px; letter-spacing: 4px; text-transform: uppercase;
+    color: rgba(196,164,90,0.4); text-align: center; margin-bottom: 14px; font-weight: 700;
+  }
+
+  .flashcard {
+    background: linear-gradient(135deg, rgba(15,38,69,0.9) 0%, rgba(10,25,41,0.95) 100%);
+    border: 1px solid rgba(196,164,90,0.15);
+    border-radius: var(--radius);
+    padding: 56px 48px 44px;
+    text-align: center;
+    margin-bottom: 24px;
+    box-shadow: 0 16px 56px rgba(0,0,0,0.5), 0 1px 0 rgba(196,164,90,0.12) inset;
+    position: relative; overflow: hidden;
+  }
+  .flashcard::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .flashcard::after {
+    content: ''; position: absolute; bottom: -100px; right: -100px;
+    width: 260px; height: 260px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,164,90,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .card-number {
+    position: absolute; top: 18px; right: 22px;
+    font-family: var(--sans); font-size: 8.5px; letter-spacing: 2px; color: rgba(196,164,90,0.3); font-weight: 700;
+  }
+
+  .card-prompt {
+    font-family: var(--sans); font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(196,164,90,0.45); margin-bottom: 20px; font-weight: 700; position: relative; z-index: 1;
+  }
+  .card-prompt strong { color: var(--gold); }
+
+  .card-verb {
+    font-family: var(--serif); font-size: clamp(3rem, 9vw, 5rem); font-weight: 400; font-style: italic;
+    color: var(--white); margin-bottom: 12px; line-height: 1.05; letter-spacing: .5px;
+    position: relative; z-index: 1;
+  }
+
+  .card-translation {
+    font-family: var(--sans); font-size: 11.5px; color: rgba(196,164,90,0.38);
+    letter-spacing: 1px; font-weight: 500; text-transform: uppercase; position: relative; z-index: 1;
+  }
+
+  /* ── OPTIONS ── */
+  .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+
+  .option-btn {
+    background: rgba(15,38,69,0.6);
+    border: 1px solid rgba(196,164,90,0.12);
+    border-radius: var(--radius);
+    padding: 20px 18px;
+    color: rgba(255,255,255,0.65);
+    font-family: var(--serif); font-size: 1.25rem; font-weight: 400; font-style: italic;
+    cursor: pointer; transition: all 0.22s cubic-bezier(0.22,1,0.36,1);
+    text-align: center; letter-spacing: .3px;
+    position: relative; overflow: hidden;
+  }
+  .option-btn::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(196,164,90,0.06) 0%, transparent 60%);
+    opacity: 0; transition: opacity 0.3s ease;
+  }
+  .option-btn:not(:disabled):hover {
+    border-color: rgba(196,164,90,0.35);
+    color: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  }
+  .option-btn:not(:disabled):hover::before { opacity: 1; }
+  .option-btn.correct {
+    background: rgba(52,211,153,0.08);
+    border-color: rgba(52,211,153,0.5);
+    color: var(--green);
+    box-shadow: 0 0 20px rgba(52,211,153,0.12);
+  }
+  .option-btn.wrong {
+    background: rgba(248,113,113,0.07);
+    border-color: rgba(248,113,113,0.4);
+    color: var(--red);
+  }
+  .option-btn:disabled { cursor: default; }
+
+  .feedback-msg {
+    text-align: center; font-family: var(--sans); font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+    font-weight: 700; height: 24px; margin-bottom: 16px;
+  }
+  .feedback-msg.correct { color: var(--green); }
+  .feedback-msg.wrong { color: var(--red); }
+
+  .next-btn {
+    display: none; width: 100%;
+    background: var(--gold); color: var(--navy-deep);
+    font-family: var(--sans); font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+    padding: 17px; border-radius: 2px; border: none; cursor: pointer;
+    transition: background 0.25s, transform 0.2s;
+  }
+  .next-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .slide-in { animation: slideIn 0.38s cubic-bezier(0.22,1,0.36,1) both; }
+
+  /* ── RESULTS ── */
+  #resultsScreen {
+    display: none; text-align: center; max-width: 520px;
+    position: relative; z-index: 1;
+    animation: fadeUp 0.5s cubic-bezier(0.22,1,0.36,1) both;
+  }
+
+  .result-score-big {
+    font-family: var(--serif); font-size: 6rem; font-weight: 300; color: var(--gold);
+    line-height: 1; margin: 24px 0 8px; font-style: italic;
+  }
+  .result-score-label {
+    font-family: var(--sans); font-size: 8.5px; letter-spacing: 4px; text-transform: uppercase;
+    color: rgba(196,164,90,0.4); font-weight: 700; margin-bottom: 32px;
+  }
+  .result-grid { display: flex; gap: 16px; justify-content: center; margin-bottom: 32px; flex-wrap: wrap; }
+  .result-card {
+    background: rgba(15,38,69,0.7); border: 1px solid rgba(196,164,90,0.12); border-radius: var(--radius);
+    padding: 22px 28px; text-align: center;
+  }
+  .result-card-num {
+    font-family: var(--serif); font-size: 2.6rem; font-weight: 300; line-height: 1; font-style: italic;
+  }
+  .result-card-num.green { color: var(--green); }
+  .result-card-num.red { color: var(--red); }
+  .result-card-label {
+    font-family: var(--sans); font-size: 8px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: rgba(196,164,90,0.35); font-weight: 700; margin-top: 8px;
+  }
+  .result-msg { font-size: 13.5px; color: rgba(255,255,255,0.38); line-height: 1.8; margin-bottom: 36px; font-weight: 300; }
+  .result-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+  .btn-outline {
+    font-family: var(--sans); font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    padding: 14px 28px; border-radius: 2px; border: 1px solid rgba(196,164,90,0.2);
+    background: transparent; color: rgba(196,164,90,0.55); cursor: pointer; text-decoration: none; display: inline-block;
+    transition: all 0.25s ease;
+  }
+  .btn-outline:hover { border-color: rgba(196,164,90,0.5); color: var(--gold); background: var(--gold-faint); }
+
+  .btn-solid {
+    font-family: var(--sans); font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    padding: 14px 28px; border-radius: 2px; border: none;
+    background: var(--gold); color: var(--navy-deep); cursor: pointer; transition: background 0.2s, transform 0.2s;
+  }
+  .btn-solid:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy-deep);
+    border-top: 1px solid rgba(196,164,90,0.1);
+    padding: 40px 48px 36px;
+    display: flex; flex-direction: column; align-items: center; gap: 20px;
+    position: relative; flex-shrink: 0;
+  }
+  footer::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.22;
+  }
+  .footer-nav { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; }
+  .footer-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--sans); font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 700;
+    color: rgba(196,164,90,0.55); text-decoration: none;
+    padding: 10px 22px; border: 1px solid rgba(196,164,90,0.15); border-radius: 2px; transition: all 0.3s ease;
+  }
+  .footer-link:hover { color: var(--gold); border-color: rgba(196,164,90,0.4); background: var(--gold-faint); }
+  .footer-link svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .footer-link.primary { background: var(--gold); color: var(--navy-deep); border-color: var(--gold); }
+  .footer-link.primary:hover { background: var(--gold-light); border-color: var(--gold-light); color: var(--navy-deep); }
+  .footer-sep { width: 1px; height: 18px; background: rgba(196,164,90,0.15); }
+  .footer-brand { font-family: var(--serif); font-size: 1.05rem; color: var(--gold); letter-spacing: 1px; }
+  .footer-copy { font-family: var(--sans); font-size: 10px; letter-spacing: 1px; color: rgba(255,255,255,0.18); }
+
+  @media (max-width: 520px) {
+    .sticky-header { padding: 0 20px; height: 60px; }
+    .hero { padding: 48px 20px 64px; min-height: 60vh; }
+    .hero-geo--ring, .hero-geo--ring2, .hero-geo--ring3 { display: none; }
+    .hero-scroll-hint { display: none; }
+    .scoreboard { padding: 14px 20px; gap: 20px; }
+    .game-main { padding: 32px 16px; }
+    .flashcard { padding: 44px 24px 32px; }
+    .options-grid { gap: 8px; }
+    footer { padding: 32px 20px; }
+    .header-nav a { display: none; }
+    .footer-sep { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-geo hero-geo--ring"></div>
+  <div class="hero-geo hero-geo--ring2"></div>
+  <div class="hero-geo hero-geo--ring3"></div>
+  <div class="hero-geo hero-geo--line"></div>
+  <div class="hero-geo hero-geo--line2"></div>
+  <div class="hero-geo hero-geo--diamond"></div>
+  <div class="hero-geo hero-geo--diamond2"></div>
+
+  <div class="hero-inner">
+    <p class="hero-overline">Flash Cards · Past Simple</p>
+    <h1 class="hero-title">Irregular <em>Verbs</em></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-subtitle">15 verbos por rodada. Escolha a forma correta entre 4 opções — confusão intencional incluída. Acumule pontos e supere seu recorde.</p>
+    <div class="hero-pills">
+      <span class="hero-pill">15 verbos / rodada</span>
+      <span class="hero-pill">Distractors inteligentes</span>
+      <span class="hero-pill">Pontuação acumulada</span>
+    </div>
+  </div>
+  <div class="hero-scroll-hint"><span></span></div>
+</header>
+
+<!-- STICKY HEADER -->
+<div class="sticky-header">
+  <a class="header-brand" href="index.html">MD <span>TALK</span></a>
+  <nav class="header-nav">
+    <a href="https://institutomdtalk.github.io/portaldoaluno/">Portal do Aluno</a>
+    <a href="https://institutomdtalk.github.io/pastsimple/">Past Simple</a>
+    <a href="index.html">Lista de Verbos</a>
+  </nav>
+</div>
+
+<!-- SCOREBOARD -->
+<div class="scoreboard">
+  <div class="score-item">
+    <div class="score-label">Rodada</div>
+    <div class="score-val" id="roundDisplay">—</div>
+  </div>
+  <div class="score-item">
+    <div class="score-label">Acertos</div>
+    <div class="score-val green" id="correctDisplay">0</div>
+  </div>
+  <div class="score-item">
+    <div class="score-label">Erros</div>
+    <div class="score-val red" id="wrongDisplay">0</div>
+  </div>
+  <div class="score-item">
+    <div class="score-label">Pontos</div>
+    <div class="score-val" id="pointsDisplay">0</div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-label">Progresso da rodada</div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+</div>
+
+<div class="game-main">
+  <!-- INTRO -->
+  <div id="introScreen">
+    <div class="section-overline">Flash Cards</div>
+    <h2 class="intro-title">Pratique <em>agora</em></h2>
+    <p class="intro-desc">As opções incluem formas regulares incorretas, variações ortográficas e verbos confundíveis — para que o treino seja, de fato, um treino.</p>
+
+    <div class="selector-group">
+      <div class="selector-label">Nível</div>
+      <div class="selector-wrap">
+        <button class="sel-btn active" data-level="all">Todos</button>
+        <button class="sel-btn" data-level="A">Iniciante</button>
+        <button class="sel-btn" data-level="B">Intermediário</button>
+        <button class="sel-btn" data-level="C">Avançado</button>
+      </div>
+    </div>
+
+    <div class="divider-ornament"><span></span></div>
+
+    <div class="selector-group">
+      <div class="selector-label">Modo de prática</div>
+      <div class="selector-wrap">
+        <button class="sel-btn active" data-mode="pt2" id="modeBtn1">Past Simple</button>
+        <button class="sel-btn" data-mode="pp" id="modeBtn2">Past Participle</button>
+        <button class="sel-btn" data-mode="both" id="modeBtn3">Ambos</button>
+      </div>
+    </div>
+
+    <div class="divider-ornament"><span></span></div>
+
+    <button class="start-btn" id="startBtn">Iniciar Rodada</button>
+  </div>
+
+  <!-- CARD -->
+  <div id="cardScreen">
+    <div class="question-type" id="questionType"></div>
+    <div class="flashcard slide-in" id="flashcard">
+      <div class="card-number" id="cardNumber">1 / 15</div>
+      <div class="card-prompt" id="cardPrompt">Qual é o <strong>Past Simple</strong> de:</div>
+      <div class="card-verb" id="cardVerb">go</div>
+      <div class="card-translation" id="cardTranslation"></div>
+    </div>
+    <div class="options-grid" id="optionsGrid"></div>
+    <div class="feedback-msg" id="feedbackMsg"></div>
+    <button class="next-btn" id="nextBtn">Próxima questão</button>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="resultsScreen">
+    <div class="section-overline">Resultado</div>
+    <h2 class="intro-title">Rodada <em>concluída</em></h2>
+    <div class="result-score-big" id="resultScore"></div>
+    <div class="result-score-label">pontos nesta rodada</div>
+    <div class="result-grid">
+      <div class="result-card">
+        <div class="result-card-num green" id="resultCorrect"></div>
+        <div class="result-card-label">Acertos</div>
+      </div>
+      <div class="result-card">
+        <div class="result-card-num red" id="resultWrong"></div>
+        <div class="result-card-label">Erros</div>
+      </div>
+      <div class="result-card">
+        <div class="result-card-num" id="resultPct" style="color:var(--gold)"></div>
+        <div class="result-card-label">Precisão</div>
+      </div>
+    </div>
+    <div class="result-msg" id="resultMsg"></div>
+    <div class="result-btns">
+      <a href="index.html" class="btn-outline">Ver Lista</a>
+      <button class="btn-solid" id="newRoundBtn">Nova Rodada</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-nav">
+    <a href="https://institutomdtalk.github.io/pastsimple/" class="footer-link">
+      <svg viewBox="0 0 24 24"><path d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+      Voltar ao Past Simple
+    </a>
+    <div class="footer-sep"></div>
+    <a href="https://institutomdtalk.github.io/portaldoaluno/" class="footer-link primary">
+      <svg viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+      Portal do Aluno
+    </a>
+  </div>
+  <div class="footer-brand">Instituto MD Talk</div>
+  <div class="footer-copy">&copy; 2025 MD Talk &bull; All rights reserved</div>
+</footer>
+
+<script>
+// ── VERB DATA ──
+const allVerbs = [
+  { inf:"be", pt2:"was/were", pp:"been", tr:"ser / estar", level:"A" },
+  { inf:"have", pt2:"had", pp:"had", tr:"ter", level:"A" },
+  { inf:"do", pt2:"did", pp:"done", tr:"fazer", level:"A" },
+  { inf:"say", pt2:"said", pp:"said", tr:"dizer", level:"A" },
+  { inf:"go", pt2:"went", pp:"gone", tr:"ir", level:"A" },
+  { inf:"get", pt2:"got", pp:"got/gotten", tr:"obter / conseguir", level:"A" },
+  { inf:"make", pt2:"made", pp:"made", tr:"fazer / criar", level:"A" },
+  { inf:"know", pt2:"knew", pp:"known", tr:"saber / conhecer", level:"A" },
+  { inf:"think", pt2:"thought", pp:"thought", tr:"pensar", level:"A" },
+  { inf:"see", pt2:"saw", pp:"seen", tr:"ver", level:"A" },
+  { inf:"come", pt2:"came", pp:"come", tr:"vir", level:"A" },
+  { inf:"give", pt2:"gave", pp:"given", tr:"dar", level:"A" },
+  { inf:"find", pt2:"found", pp:"found", tr:"encontrar", level:"A" },
+  { inf:"tell", pt2:"told", pp:"told", tr:"contar / dizer", level:"A" },
+  { inf:"become", pt2:"became", pp:"become", tr:"tornar-se", level:"A" },
+  { inf:"leave", pt2:"left", pp:"left", tr:"sair / deixar", level:"A" },
+  { inf:"feel", pt2:"felt", pp:"felt", tr:"sentir", level:"A" },
+  { inf:"put", pt2:"put", pp:"put", tr:"colocar", level:"A" },
+  { inf:"bring", pt2:"brought", pp:"brought", tr:"trazer", level:"A" },
+  { inf:"begin", pt2:"began", pp:"begun", tr:"começar", level:"A" },
+  { inf:"keep", pt2:"kept", pp:"kept", tr:"manter / guardar", level:"A" },
+  { inf:"hold", pt2:"held", pp:"held", tr:"segurar / manter", level:"A" },
+  { inf:"write", pt2:"wrote", pp:"written", tr:"escrever", level:"A" },
+  { inf:"sit", pt2:"sat", pp:"sat", tr:"sentar", level:"A" },
+  { inf:"stand", pt2:"stood", pp:"stood", tr:"ficar em pé", level:"A" },
+  { inf:"hear", pt2:"heard", pp:"heard", tr:"ouvir", level:"A" },
+  { inf:"let", pt2:"let", pp:"let", tr:"deixar / permitir", level:"A" },
+  { inf:"meet", pt2:"met", pp:"met", tr:"encontrar / conhecer", level:"A" },
+  { inf:"run", pt2:"ran", pp:"run", tr:"correr", level:"A" },
+  { inf:"read", pt2:"read", pp:"read", tr:"ler", level:"A" },
+  { inf:"eat", pt2:"ate", pp:"eaten", tr:"comer", level:"A" },
+  { inf:"drink", pt2:"drank", pp:"drunk", tr:"beber", level:"A" },
+  { inf:"sleep", pt2:"slept", pp:"slept", tr:"dormir", level:"A" },
+  { inf:"buy", pt2:"bought", pp:"bought", tr:"comprar", level:"A" },
+  { inf:"pay", pt2:"paid", pp:"paid", tr:"pagar", level:"A" },
+  { inf:"take", pt2:"took", pp:"taken", tr:"pegar / levar", level:"A" },
+  { inf:"speak", pt2:"spoke", pp:"spoken", tr:"falar", level:"A" },
+  { inf:"send", pt2:"sent", pp:"sent", tr:"enviar", level:"A" },
+  { inf:"show", pt2:"showed", pp:"shown", tr:"mostrar", level:"A" },
+  { inf:"break", pt2:"broke", pp:"broken", tr:"quebrar", level:"A" },
+  { inf:"win", pt2:"won", pp:"won", tr:"ganhar / vencer", level:"A" },
+  { inf:"lose", pt2:"lost", pp:"lost", tr:"perder", level:"A" },
+  { inf:"drive", pt2:"drove", pp:"driven", tr:"dirigir", level:"A" },
+  { inf:"fly", pt2:"flew", pp:"flown", tr:"voar", level:"A" },
+  { inf:"swim", pt2:"swam", pp:"swum", tr:"nadar", level:"A" },
+  { inf:"sing", pt2:"sang", pp:"sung", tr:"cantar", level:"A" },
+  { inf:"fall", pt2:"fell", pp:"fallen", tr:"cair", level:"A" },
+  { inf:"catch", pt2:"caught", pp:"caught", tr:"pegar / capturar", level:"A" },
+  { inf:"throw", pt2:"threw", pp:"thrown", tr:"jogar / lançar", level:"A" },
+  { inf:"build", pt2:"built", pp:"built", tr:"construir", level:"B" },
+  { inf:"choose", pt2:"chose", pp:"chosen", tr:"escolher", level:"B" },
+  { inf:"cut", pt2:"cut", pp:"cut", tr:"cortar", level:"B" },
+  { inf:"deal", pt2:"dealt", pp:"dealt", tr:"lidar / negociar", level:"B" },
+  { inf:"draw", pt2:"drew", pp:"drawn", tr:"desenhar", level:"B" },
+  { inf:"dream", pt2:"dreamt/dreamed", pp:"dreamt/dreamed", tr:"sonhar", level:"B" },
+  { inf:"fight", pt2:"fought", pp:"fought", tr:"lutar / brigar", level:"B" },
+  { inf:"forget", pt2:"forgot", pp:"forgotten", tr:"esquecer", level:"B" },
+  { inf:"forgive", pt2:"forgave", pp:"forgiven", tr:"perdoar", level:"B" },
+  { inf:"freeze", pt2:"froze", pp:"frozen", tr:"congelar", level:"B" },
+  { inf:"grow", pt2:"grew", pp:"grown", tr:"crescer", level:"B" },
+  { inf:"hang", pt2:"hung", pp:"hung", tr:"pendurar", level:"B" },
+  { inf:"hide", pt2:"hid", pp:"hidden", tr:"esconder", level:"B" },
+  { inf:"hit", pt2:"hit", pp:"hit", tr:"bater / acertar", level:"B" },
+  { inf:"hurt", pt2:"hurt", pp:"hurt", tr:"machucar / doer", level:"B" },
+  { inf:"lead", pt2:"led", pp:"led", tr:"liderar", level:"B" },
+  { inf:"learn", pt2:"learnt/learned", pp:"learnt/learned", tr:"aprender", level:"B" },
+  { inf:"lend", pt2:"lent", pp:"lent", tr:"emprestar", level:"B" },
+  { inf:"mean", pt2:"meant", pp:"meant", tr:"significar", level:"B" },
+  { inf:"ride", pt2:"rode", pp:"ridden", tr:"andar (cavalo/bike)", level:"B" },
+  { inf:"ring", pt2:"rang", pp:"rung", tr:"tocar / ligar", level:"B" },
+  { inf:"rise", pt2:"rose", pp:"risen", tr:"subir / levantar", level:"B" },
+  { inf:"sell", pt2:"sold", pp:"sold", tr:"vender", level:"B" },
+  { inf:"set", pt2:"set", pp:"set", tr:"definir / configurar", level:"B" },
+  { inf:"shoot", pt2:"shot", pp:"shot", tr:"atirar", level:"B" },
+  { inf:"shut", pt2:"shut", pp:"shut", tr:"fechar", level:"B" },
+  { inf:"spend", pt2:"spent", pp:"spent", tr:"gastar / passar tempo", level:"B" },
+  { inf:"steal", pt2:"stole", pp:"stolen", tr:"roubar", level:"B" },
+  { inf:"stick", pt2:"stuck", pp:"stuck", tr:"grudar / ficar preso", level:"B" },
+  { inf:"swear", pt2:"swore", pp:"sworn", tr:"jurar / xingar", level:"B" },
+  { inf:"sweep", pt2:"swept", pp:"swept", tr:"varrer", level:"B" },
+  { inf:"swing", pt2:"swung", pp:"swung", tr:"balançar", level:"B" },
+  { inf:"teach", pt2:"taught", pp:"taught", tr:"ensinar", level:"B" },
+  { inf:"tear", pt2:"tore", pp:"torn", tr:"rasgar", level:"B" },
+  { inf:"understand", pt2:"understood", pp:"understood", tr:"entender", level:"B" },
+  { inf:"wake", pt2:"woke", pp:"woken", tr:"acordar", level:"B" },
+  { inf:"wear", pt2:"wore", pp:"worn", tr:"vestir / usar", level:"B" },
+  { inf:"forbid", pt2:"forbade", pp:"forbidden", tr:"proibir", level:"B" },
+  { inf:"lay", pt2:"laid", pp:"laid", tr:"deitar / pôr", level:"B" },
+  { inf:"lie", pt2:"lay", pp:"lain", tr:"deitar-se", level:"B" },
+  { inf:"light", pt2:"lit", pp:"lit", tr:"acender", level:"B" },
+  { inf:"overcome", pt2:"overcame", pp:"overcome", tr:"superar", level:"B" },
+  { inf:"slide", pt2:"slid", pp:"slid", tr:"deslizar", level:"B" },
+  { inf:"smell", pt2:"smelt/smelled", pp:"smelt/smelled", tr:"cheirar", level:"B" },
+  { inf:"arise", pt2:"arose", pp:"arisen", tr:"surgir / levantar", level:"C" },
+  { inf:"awake", pt2:"awoke", pp:"awoken", tr:"despertar", level:"C" },
+  { inf:"bear", pt2:"bore", pp:"born/borne", tr:"suportar / dar à luz", level:"C" },
+  { inf:"beat", pt2:"beat", pp:"beaten", tr:"bater / vencer", level:"C" },
+  { inf:"bend", pt2:"bent", pp:"bent", tr:"dobrar / curvar", level:"C" },
+  { inf:"bite", pt2:"bit", pp:"bitten", tr:"morder", level:"C" },
+  { inf:"bleed", pt2:"bled", pp:"bled", tr:"sangrar", level:"C" },
+  { inf:"blow", pt2:"blew", pp:"blown", tr:"soprar", level:"C" },
+  { inf:"breed", pt2:"bred", pp:"bred", tr:"criar / reproduzir", level:"C" },
+  { inf:"burst", pt2:"burst", pp:"burst", tr:"explodir / estourar", level:"C" },
+  { inf:"cast", pt2:"cast", pp:"cast", tr:"lançar / elencar", level:"C" },
+  { inf:"cling", pt2:"clung", pp:"clung", tr:"agarrar-se", level:"C" },
+  { inf:"cost", pt2:"cost", pp:"cost", tr:"custar", level:"C" },
+  { inf:"creep", pt2:"crept", pp:"crept", tr:"rastejar", level:"C" },
+  { inf:"dig", pt2:"dug", pp:"dug", tr:"cavar", level:"C" },
+  { inf:"feed", pt2:"fed", pp:"fed", tr:"alimentar", level:"C" },
+  { inf:"flee", pt2:"fled", pp:"fled", tr:"fugir", level:"C" },
+  { inf:"fling", pt2:"flung", pp:"flung", tr:"arremessar", level:"C" },
+  { inf:"grind", pt2:"ground", pp:"ground", tr:"moer", level:"C" },
+  { inf:"kneel", pt2:"knelt", pp:"knelt", tr:"ajoelhar", level:"C" },
+  { inf:"leap", pt2:"leapt/leaped", pp:"leapt/leaped", tr:"saltar", level:"C" },
+  { inf:"rewrite", pt2:"rewrote", pp:"rewritten", tr:"reescrever", level:"C" },
+  { inf:"shed", pt2:"shed", pp:"shed", tr:"derramar / perder pelos", level:"C" },
+  { inf:"shine", pt2:"shone", pp:"shone", tr:"brilhar", level:"C" },
+  { inf:"shrink", pt2:"shrank", pp:"shrunk", tr:"encolher", level:"C" },
+  { inf:"sink", pt2:"sank", pp:"sunk", tr:"afundar", level:"C" },
+  { inf:"spin", pt2:"spun", pp:"spun", tr:"girar / fiar", level:"C" },
+  { inf:"split", pt2:"split", pp:"split", tr:"dividir / separar", level:"C" },
+  { inf:"spread", pt2:"spread", pp:"spread", tr:"espalhar", level:"C" },
+  { inf:"spring", pt2:"sprang", pp:"sprung", tr:"saltar / brotar", level:"C" },
+  { inf:"stink", pt2:"stank", pp:"stunk", tr:"feder / cheirar mal", level:"C" },
+  { inf:"strive", pt2:"strove", pp:"striven", tr:"esforçar-se", level:"C" },
+  { inf:"undergo", pt2:"underwent", pp:"undergone", tr:"sofrer / passar por", level:"C" },
+  { inf:"undertake", pt2:"undertook", pp:"undertaken", tr:"empreender", level:"C" },
+  { inf:"upset", pt2:"upset", pp:"upset", tr:"perturbar / virar", level:"C" },
+  { inf:"weave", pt2:"wove", pp:"woven", tr:"tecer", level:"C" },
+  { inf:"weep", pt2:"wept", pp:"wept", tr:"chorar", level:"C" },
+  { inf:"withstand", pt2:"withstood", pp:"withstood", tr:"resistir / suportar", level:"C" },
+  { inf:"wring", pt2:"wrung", pp:"wrung", tr:"torcer / espremer", level:"C" },
+];
+
+// ── INTELLIGENT DISTRACTOR ENGINE ──
+// Regular form generator — creates plausible wrong "regular" answers
+function regularForm(inf) {
+  // Apply common English regular past rules
+  if (/e$/.test(inf)) return inf + 'd';          // like → liked
+  if (/[aeiou][^aeiou]$/.test(inf) && inf.length <= 6) return inf + inf.slice(-1) + 'ed'; // run→runned
+  if (/[^aeiou]y$/.test(inf)) return inf.slice(0,-1) + 'ied'; // fly→flied
+  return inf + 'ed';
+}
+
+// Phonetic confusables: verbs whose past forms SOUND or LOOK similar
+// Maps a target field value to alternative plausible wrong answers
+const confusables = {
+  // similar vowel patterns — e.g. -ang/-ung/-ong mixups
+  'sang': ['singed', 'sungen', 'sang', 'sung'],
+  'rang': ['ringed', 'rungen', 'rang', 'rung'],
+  'swam': ['swimmed', 'swum', 'swammed'],
+  'ran': ['runned', 'run', 'ranned'],
+  'drank': ['drinked', 'drunk', 'drunked'],
+  'began': ['beginned', 'begun', 'begunned'],
+  'came': ['comed', 'come', 'camed'],
+  'gave': ['gaved', 'given', 'geaved'],
+  'drove': ['drived', 'driven', 'droved'],
+  'wrote': ['writed', 'written', 'writ'],
+  'rode': ['rided', 'ridden', 'rod'],
+  'spoke': ['speaked', 'spoken', 'spoked'],
+  'broke': ['breaked', 'broken', 'brokened'],
+  'chose': ['choosed', 'chosen', 'chosed'],
+  'froze': ['freezed', 'frozen', 'frozed'],
+  'stole': ['stealed', 'stolen', 'stoled'],
+  'swore': ['sweard', 'sworn', 'swored'],
+  'tore': ['teared', 'torn', 'tored'],
+  'wore': ['weared', 'worn', 'wored'],
+  'rose': ['rised', 'risen', 'rosed'],
+  'grew': ['growed', 'grown', 'grewd'],
+  'drew': ['drawed', 'drawn', 'drewd'],
+  'threw': ['throwed', 'thrown', 'thred'],
+  'flew': ['flied', 'flown', 'flewed'],
+  'knew': ['knowed', 'known', 'knowed'],
+  'blew': ['blowed', 'blown', 'blewed'],
+  'ate': ['eated', 'eaten', 'eat'],
+  'fell': ['falled', 'fallen', 'felled'],
+  'told': ['telled', 'teld', 'tolded'],
+  'sold': ['selled', 'seld', 'solded'],
+  'held', ['holded', 'held', 'helled'],
+  'built': ['builded', 'builted', 'bilt'],
+  'dealt': ['dealed', 'dealt', 'dealt'],
+  'felt': ['feeled', 'felted', 'felt'],
+  'left': ['leaved', 'leavd', 'lefted'],
+  'kept': ['keeped', 'keped', 'keeot'],
+  'slept': ['sleeped', 'sleped', 'slept'],
+  'spent': ['spended', 'spenned', 'spented'],
+  'sent': ['sended', 'senned', 'sented'],
+  'lent': ['leaned', 'lended', 'lented'],
+  'meant': ['meaned', 'menned', 'meanted'],
+  'found': ['finded', 'finned', 'fownded'],
+  'stood': ['standed', 'standed', 'stod'],
+  'took': ['taked', 'tookt', 'tookd'],
+  'got': ['getted', 'gat', 'gotted'],
+  'put': ['putted', 'putd', 'puted'],
+  'let': ['letted', 'letd', 'leted'],
+  'hit': ['hitted', 'hited', 'hited'],
+  'cut': ['cutted', 'cutd', 'cuted'],
+  'set': ['setted', 'setd', 'seted'],
+  'bought': ['buyed', 'boughted', 'baughed'],
+  'brought': ['bringed', 'broughted', 'braught'],
+  'thought': ['thinked', 'thoughd', 'thonght'],
+  'caught': ['catched', 'caugh', 'caughted'],
+  'taught': ['teached', 'taugh', 'taughted'],
+  'fought': ['fighted', 'faught', 'foughted'],
+  'sought': ['seeked', 'saught', 'soughted'],
+  'heard': ['heared', 'herd', 'hearded'],
+  'said': ['sayed', 'saied', 'said'],
+  'paid': ['payed', 'paied', 'paid'],
+  'made': ['maked', 'maid', 'maded'],
+  'laid': ['layed', 'laied', 'layd'],
+  'had': ['haved', 'hadd', 'had'],
+  'did': ['doed', 'done', 'dodd'],
+  'was/were': ['be', 'being', 'beed'],
+  'led': ['leaded', 'leded', 'lid'],
+  'met': ['meeted', 'meted', 'matt'],
+  'sat': ['sitted', 'sated', 'satt'],
+  'ran': ['runned', 'ranned', 'rund'],
+  'won': ['winned', 'woned', 'wund'],
+  'lost': ['losed', 'losted', 'lossed'],
+  'read': ['readed', 'red', 'readd'],
+  'showed': ['showned', 'showed', 'showd'],
+  'became': ['becomed', 'become', 'becamed'],
+  'began': ['beginned', 'begun', 'begunned'],
+  'swung': ['swinged', 'swang', 'swunged'],
+  'hung': ['hanged', 'hang', 'hungd'],
+  'stuck': ['sticked', 'stickt', 'stuckd'],
+  'hid': ['hided', 'hidden', 'hidd'],
+  'bit': ['bited', 'bitten', 'bitt'],
+  'bled': ['bleeded', 'bleded', 'blee'],
+  'bred': ['breeded', 'breded', 'bree'],
+  'fed': ['feeded', 'feded', 'fe'],
+  'fled': ['fleeded', 'fleded', 'fle'],
+  'crept': ['creeped', 'crepted', 'crep'],
+  'knelt': ['kneeled', 'knelted', 'nelt'],
+  'wept': ['weeped', 'wepted', 'wep'],
+  'dug': ['digged', 'dugg', 'dugd'],
+  'flung': ['flinged', 'flang', 'flungd'],
+  'clung': ['clinged', 'clang', 'clungd'],
+  'spun': ['spinned', 'span', 'spund'],
+  'sank': ['sinked', 'sunk', 'sankd'],
+  'shrank': ['shrinked', 'shrunk', 'shrankd'],
+  'sprang': ['springed', 'sprung', 'sprangd'],
+  'stank': ['stinked', 'stunk', 'stankd'],
+  'wove': ['weaved', 'woven', 'woved'],
+  'strove': ['strived', 'striven', 'stroved'],
+  'arose': ['arised', 'arisen', 'arosed'],
+  'awoke': ['awaked', 'awoken', 'awoked'],
+  'bore': ['beared', 'born', 'bored'],
+  'shed': ['shedded', 'sheded', 'shedd'],
+  'split': ['splitted', 'splitd', 'spit'],
+  'spread': ['spreaded', 'spred', 'sprad'],
+  'ground': ['grinded', 'grind', 'grounded'],
+  'shone': ['shined', 'shined', 'shoned'],
+  'froze': ['freezed', 'frozen', 'frozed'],
+  'underwent': ['undergoed', 'underweent', 'undergoed'],
+  'undertook': ['undertaked', 'undertakend', 'undertookd'],
+  'overcame': ['overcomed', 'overcome', 'overcamed'],
+  'slid': ['slided', 'slidd', 'sladed'],
+};
+
+function getSmartDistractors(card, mode, pool) {
+  const correct = mode === 'pt2' ? card.pt2 : card.pp;
+  const wrongPool = [];
+
+  // Strategy 1: regular form of the same verb (most common confusable)
+  const reg = regularForm(card.inf);
+  if (reg !== correct && !reg.includes('/')) wrongPool.push({ val: reg, weight: 5 });
+
+  // Strategy 2: use confusable table if available
+  const conf = confusables[correct];
+  if (conf) {
+    conf.forEach(c => {
+      if (c !== correct) wrongPool.push({ val: c, weight: 4 });
+    });
+  }
+
+  // Strategy 3: same mode form of similar-sounding verbs from pool
+  // Prioritize verbs with similar patterns (same ending, same vowel mutation type)
+  const similar = pool.filter(v => {
+    if (v.inf === card.inf) return false;
+    const t = mode === 'pt2' ? v.pt2 : v.pp;
+    // same ending pattern
+    const sameEnd = t.slice(-2) === correct.slice(-2);
+    // similar length
+    const simLen = Math.abs(t.length - correct.length) <= 2;
+    return (sameEnd || simLen) && t !== correct;
+  });
+  shuffle(similar).slice(0, 4).forEach(v => {
+    const t = mode === 'pt2' ? v.pt2 : v.pp;
+    wrongPool.push({ val: t, weight: 3 });
+  });
+
+  // Strategy 4: the PAST PARTICIPLE instead of past simple (or vice versa) — classic trap
+  const swapForm = mode === 'pt2' ? card.pp : card.pt2;
+  if (swapForm !== correct) wrongPool.push({ val: swapForm, weight: 4 });
+
+  // Strategy 5: regular pool verbs (lowest weight — only as last resort)
+  shuffle(pool.filter(v => v.inf !== card.inf)).slice(0, 6).forEach(v => {
+    const t = mode === 'pt2' ? v.pt2 : v.pp;
+    if (t !== correct) wrongPool.push({ val: t, weight: 1 });
+  });
+
+  // Deduplicate by value, keep highest weight
+  const deduped = {};
+  wrongPool.forEach(item => {
+    if (!deduped[item.val] || deduped[item.val] < item.weight) {
+      deduped[item.val] = item.weight;
+    }
+  });
+
+  // Remove correct answer if it sneaked in, remove empty strings
+  delete deduped[correct];
+  delete deduped[''];
+
+  // Sort by weight descending, pick top candidates, shuffle, take 3
+  const candidates = Object.entries(deduped)
+    .sort((a, b) => b[1] - a[1])
+    .map(e => e[0]);
+
+  // Weighted shuffle: prefer high-weight items for the first 3 slots
+  const weighted = [];
+  Object.entries(deduped).forEach(([val, w]) => {
+    for (let i = 0; i < w; i++) weighted.push(val);
+  });
+  shuffleArr(weighted);
+
+  const seen = new Set();
+  const picked = [];
+  for (const v of weighted) {
+    if (!seen.has(v)) { seen.add(v); picked.push(v); }
+    if (picked.length === 3) break;
+  }
+
+  // Fill with candidates if needed
+  if (picked.length < 3) {
+    for (const c of candidates) {
+      if (!picked.includes(c)) picked.push(c);
+      if (picked.length === 3) break;
+    }
+  }
+
+  return picked.slice(0, 3);
+}
+
+function shuffleArr(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+function shuffle(arr) { return shuffleArr([...arr]); }
+
+// ── STATE ──
+let selectedLevel = 'all';
+let selectedMode = 'pt2';
+let round = 0, totalPoints = 0, totalCorrect = 0, totalWrong = 0;
+let roundQueue = [], usedInSession = new Set();
+let currentIdx = 0, currentCard = null, currentAnswer = '', answered = false;
+let roundCorrect = 0, roundWrong = 0;
+
+const introScreen = document.getElementById('introScreen');
+const cardScreen = document.getElementById('cardScreen');
+const resultsScreen = document.getElementById('resultsScreen');
+
+document.querySelectorAll('[data-level]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-level]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedLevel = btn.dataset.level;
+  });
+});
+
+const modeBtns = [document.getElementById('modeBtn1'), document.getElementById('modeBtn2'), document.getElementById('modeBtn3')];
+modeBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    modeBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedMode = btn.dataset.mode;
+  });
+});
+
+document.getElementById('startBtn').addEventListener('click', startRound);
+document.getElementById('nextBtn').addEventListener('click', nextCard);
+document.getElementById('newRoundBtn').addEventListener('click', () => {
+  resultsScreen.style.display = 'none';
+  introScreen.style.display = '';
+});
+
+function getPool() {
+  return selectedLevel === 'all' ? allVerbs : allVerbs.filter(v => v.level === selectedLevel);
+}
+
+function startRound() {
+  const pool = getPool();
+  if (pool.length < 4) { alert('Poucos verbos neste nível. Escolha "Todos" ou outro nível.'); return; }
+
+  round++; roundCorrect = 0; roundWrong = 0; answered = false; currentIdx = 0;
+
+  let available = pool.filter(v => !usedInSession.has(v.inf));
+  if (available.length < 15) { usedInSession.clear(); available = pool; }
+
+  roundQueue = shuffle(available).slice(0, 15);
+  roundQueue.forEach(v => usedInSession.add(v.inf));
+
+  document.getElementById('roundDisplay').textContent = round;
+  updateScoreboard(); updateProgress();
+
+  introScreen.style.display = 'none';
+  resultsScreen.style.display = 'none';
+  cardScreen.style.display = 'block';
+  showCard();
+}
+
+function showCard() {
+  answered = false;
+  document.getElementById('nextBtn').style.display = 'none';
+  const fb = document.getElementById('feedbackMsg');
+  fb.textContent = ''; fb.className = 'feedback-msg';
+
+  currentCard = roundQueue[currentIdx];
+  let mode = selectedMode;
+  if (mode === 'both') mode = Math.random() < 0.5 ? 'pt2' : 'pp';
+
+  currentAnswer = mode === 'pt2' ? currentCard.pt2 : currentCard.pp;
+  document.getElementById('questionType').textContent = mode === 'pt2' ? 'Past Simple' : 'Past Participle';
+  document.getElementById('cardPrompt').innerHTML = `Qual é o <strong>${mode === 'pt2' ? 'Past Simple' : 'Past Participle'}</strong> de:`;
+  document.getElementById('cardVerb').textContent = currentCard.inf;
+  document.getElementById('cardTranslation').textContent = currentCard.tr.toUpperCase();
+  document.getElementById('cardNumber').textContent = `${currentIdx + 1} / 15`;
+
+  const distractors = getSmartDistractors(currentCard, mode, getPool());
+  const options = shuffle([currentAnswer, ...distractors]);
+
+  const grid = document.getElementById('optionsGrid');
+  grid.innerHTML = '';
+  options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    btn.textContent = opt;
+    btn.addEventListener('click', () => handleAnswer(btn, opt));
+    grid.appendChild(btn);
+  });
+
+  const fc = document.getElementById('flashcard');
+  fc.classList.remove('slide-in');
+  void fc.offsetWidth;
+  fc.classList.add('slide-in');
+  updateProgress();
+}
+
+function handleAnswer(btn, opt) {
+  if (answered) return;
+  answered = true;
+  const isCorrect = opt === currentAnswer;
+
+  document.querySelectorAll('.option-btn').forEach(b => {
+    b.disabled = true;
+    if (b.textContent === currentAnswer) b.classList.add('correct');
+  });
+  if (!isCorrect) btn.classList.add('wrong');
+
+  const fb = document.getElementById('feedbackMsg');
+  if (isCorrect) {
+    roundCorrect++; totalCorrect++; totalPoints += 10;
+    fb.textContent = 'Correto — +10 pontos';
+    fb.className = 'feedback-msg correct';
+  } else {
+    roundWrong++; totalWrong++;
+    fb.textContent = `Errado — resposta: ${currentAnswer}`;
+    fb.className = 'feedback-msg wrong';
+  }
+  updateScoreboard();
+  document.getElementById('nextBtn').style.display = 'block';
+}
+
+function nextCard() {
+  currentIdx++;
+  if (currentIdx >= 15) showResults(); else showCard();
+}
+
+function showResults() {
+  cardScreen.style.display = 'none';
+  resultsScreen.style.display = 'block';
+  const pct = Math.round((roundCorrect / 15) * 100);
+  document.getElementById('resultScore').textContent = roundCorrect * 10;
+  document.getElementById('resultCorrect').textContent = roundCorrect;
+  document.getElementById('resultWrong').textContent = roundWrong;
+  document.getElementById('resultPct').textContent = pct + '%';
+  const msgs = ['Perfeito. Domínio completo nesta rodada.','Excelente desempenho. Você está dominando os verbos irregulares.','Bom trabalho. Continue praticando para consolidar o aprendizado.','Continue estudando. A prática sistemática leva à fluência.','Revise a lista e tente novamente. A consistência é o caminho.'];
+  document.getElementById('resultMsg').textContent = pct === 100 ? msgs[0] : pct >= 80 ? msgs[1] : pct >= 60 ? msgs[2] : pct >= 40 ? msgs[3] : msgs[4];
+}
+
+function updateScoreboard() {
+  document.getElementById('correctDisplay').textContent = totalCorrect;
+  document.getElementById('wrongDisplay').textContent = totalWrong;
+  document.getElementById('pointsDisplay').textContent = totalPoints;
+}
+function updateProgress() {
+  document.getElementById('progressFill').style.width = ((currentIdx / 15) * 100) + '%';
+}
+
+// Parallax
+const geos = document.querySelectorAll('.hero-geo');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if (y < window.innerHeight) {
+    geos.forEach((g, i) => { g.style.transform = `translateY(${y * (0.018 + i * 0.007)}px)`; });
+  }
+}, { passive: true });
+</script>
+</body>
+</html>
